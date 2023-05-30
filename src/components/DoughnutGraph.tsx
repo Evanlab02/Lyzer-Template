@@ -1,41 +1,47 @@
 import React from "react";
-import { Chart, ArcElement, Tooltip, Legend } from 'chart.js'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title, ChartData } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import "../styles/doughnutgraph.scss"
+import { DonutProps } from "../helpers/propInterfaces";
+import "../styles/doughnutgraph.scss";
 
-Chart.register([ArcElement, Tooltip, Legend]);
+export default function DoughnutGraph(props: DonutProps) {
+    ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
-export default function DoughnutGraph() {
-    const data = {
-        labels: [
-            'Max Verstappen',
-            'Sergio Perez',
-            'Fernando Alonso',
-            'Lewis Hamilton'
-        ],
-        datasets: [{
-            label: 'WDC Points',
-            data: [144, 105, 93, 69],
-            backgroundColor: [
-                '#000066',
-                '#0000cc',
-                '#006600',
-                '#00ccff'
-            ],
-            hoverOffset: 4,
-            borderWidth: 3,
-            borderColor: '#fff'
-        },
-        ],
-        showTooltips: true,
-        responsive: true
+    const data: ChartData = {
+        labels: props.labels,
+        datasets: props.datasets
+    };
+
+    const options: any = {
+        cutout: props.options.cutout,
+        responsive: props.options.responsive,
+        plugins: {
+            legend: {
+                display: props.options.showLegend,
+                position: props.options.legendPosition,
+            },
+            tooltip: {
+                enabled: props.options.showTooltip,
+            },
+            title: {
+                display: props.options.showTitle,
+                text: props.options.titleText,
+                font: {
+                    size: props.options.titleSize,
+                    weight: props.options.titleWeight
+                },
+                align: props.options.titleAlign,
+                color: props.options.titleColor,
+            }
+        }
     };
 
     return (
-        <div className="doughnut-graph">
+        <div className="doughnut-graph panel" >
             <Doughnut
-                data={data}
+                data={data as any}
+                options={options}
             />
-        </div>
+        </div >
     )
 }
