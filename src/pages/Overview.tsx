@@ -1,6 +1,7 @@
 import React from "react";
 import DoughnutGraph from "../components/DoughnutGraph";
 import { DonutDataSet, DonutOptions, DonutProps } from "../helpers/propInterfaces";
+import { Link } from "react-router-dom";
 
 export default function Overview() {
     const drivers = [
@@ -243,6 +244,10 @@ export default function Overview() {
                 <DoughnutGraph {...driverDonutProps} />
                 <DoughnutGraph {...teamDonutProps} />
             </div>
+            <Link
+                className="App-link"
+                to="/OverviewV2"
+            >OverviewV2</Link>
         </div>
     );
 }

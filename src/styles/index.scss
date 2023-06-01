@@ -20,6 +20,10 @@ h2 {
     padding-bottom: 0.5rem;
 }
 
+h3 {
+    color: white;
+}
+
 .panel-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -27,7 +31,18 @@ h2 {
 
 .panel {
     background-color: #333333;
+    color: white;
     padding: 1rem;
     margin: 1rem;
     border-radius: 0.5rem;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.meh {
+    padding-top: 3rem;
 }
