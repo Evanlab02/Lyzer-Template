@@ -1,5 +1,12 @@
 .doughnut-graph {
-    height: 500px;
+    height: 25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.doughnut-graph-large {
+    height: 40rem;
     display: flex;
     justify-content: center;
     align-items: center;
