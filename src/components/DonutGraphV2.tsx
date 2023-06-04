@@ -1,16 +1,9 @@
-import React from "react";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title, ChartData } from "chart.js";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import { DonutProps } from "../helpers/propInterfaces";
-import "../styles/doughnutgraph.scss";
+import { DonutPropsV2 } from "../helpers/propInterfaces";
 
-export default function DoughnutGraph(props: DonutProps) {
+export default function DonutGraphV2(props: DonutPropsV2) {
     ChartJS.register(ArcElement, Tooltip, Legend, Title);
-
-    const data: ChartData = {
-        labels: props.labels,
-        datasets: props.datasets
-    };
 
     const options: any = {
         cutout: props.options.cutout,
@@ -36,6 +29,28 @@ export default function DoughnutGraph(props: DonutProps) {
         }
     };
 
+    const datasets: object[] = [];
+
+    props.datasets.forEach((dataset) => {
+        datasets.push({
+            label: dataset.label,
+            data: dataset.data,
+            backgroundColor: dataset.backgroundColor,
+            borderColor: dataset.borderColor,
+            hoverOffset: props.options.globalHoverOffset,
+            rotation: props.options.globalRotation,
+            circumference: props.options.globalCircumference,
+            borderWidth: dataset.borderWidth,
+            hoverBackgroundColor: dataset.hoverBackgroundColor
+        })
+    });
+
+
+    const data = {
+        labels: props.labels,
+        datasets: datasets
+    };
+
     return (
         <div className="doughnut-graph panel" >
             <Doughnut
@@ -43,5 +58,5 @@ export default function DoughnutGraph(props: DonutProps) {
                 options={options}
             />
         </div >
-    )
+    );
 }

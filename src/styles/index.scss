@@ -16,6 +16,33 @@ code {
 h1,
 h2 {
     color: white;
+    padding-left: 2.5rem;
     padding-bottom: 0.5rem;
-    text-align: center;
+}
+
+h3 {
+    color: white;
+}
+
+.panel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.panel {
+    background-color: #333333;
+    color: white;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 0.5rem;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.meh {
+    padding-top: 3rem;
 }
